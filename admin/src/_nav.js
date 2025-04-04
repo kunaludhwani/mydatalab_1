@@ -37,6 +37,16 @@ const _nav = [
     //   text: 'NEW',
     // },
   },
+  {
+    component: CNavItem,
+    name: 'Pincode Search',
+    to: '/get-pincode-details',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    // badge: {
+    //   color: 'info',
+    //   text: 'NEW',
+    // },
+  },
   // {
   //   component: CNavTitle,
   //   name: 'Theme',
