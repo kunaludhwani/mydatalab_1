@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   CTable,
   CTableHead,
@@ -10,18 +10,36 @@ import {
   CFormInput,
   CSpinner,
 } from '@coreui/react'
-import pinCodeData from '../../../data/pincode.json'
-
-// Function to get data based on pincode
-const getDataByPincode = (pincode) => {
-  return pinCodeData.filter((item) => item.pincode == pincode)
-}
 
 const PincodeDataTable = () => {
   const [inputPincode, setInputPincode] = useState('')
   const [displayData, setDisplayData] = useState([])
   const [dataFetched, setDataFetched] = useState(false) // Track data fetching
   const [loading, setLoading] = useState(false) // Track loading state
+  const [pinCodeData, setPinCodeData] = useState([]) // State for storing pincode data
+
+  // Fetch pincode data asynchronously when the component mounts
+  useEffect(() => {
+    const fetchPinCodeData = async () => {
+      setLoading(true) // Start the loader while fetching data
+      try {
+        // Dynamically import the pincode data
+        const data = await import('../../../data/pincode.json')
+        setPinCodeData(data.default) // Assuming data is exported as default in JSON
+        setLoading(false) // Stop the loader after data is fetched
+      } catch (error) {
+        console.error('Error fetching pincode data: ', error)
+        setLoading(false) // Stop the loader if there's an error
+      }
+    }
+
+    fetchPinCodeData() // Invoke the async function
+  }, []) // Empty dependency array ensures this only runs once on mount
+
+  // Function to get data based on pincode
+  const getDataByPincode = (pincode) => {
+    return pinCodeData.filter((item) => item.pincode == pincode)
+  }
 
   // Handle the input change
   const handleInputChange = (event) => {
