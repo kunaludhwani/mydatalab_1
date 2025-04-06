@@ -28,6 +28,10 @@ app.use((err, req, res, next) => {
     return res.status(500).send({ success: false, msg: 'Someting went wrong', data: err.stack });
 });
 
+app.use((req, res, next) => {
+    res.status(200).json({ error: 'ok' });
+  });
+
 app.listen(app.get('port'), () => {
     console.log(`Server is listening on http://${os.hostname()}:${app.get('port')}`);
 });
