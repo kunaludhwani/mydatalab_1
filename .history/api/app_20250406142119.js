@@ -4,7 +4,7 @@ import cors from 'cors';
 import os from 'os';
 
 import config from './config/config';
-import usersModule from './modules/users/router';
+import employeeModule from './modules/employee/router';
 
 const app = express();
 
@@ -21,7 +21,7 @@ app.use(express.static('public'))
 app.get('/', (req, res) => res.send('Health Checks OK'))
 
 
-app.use('/api', usersModule);
+app.use('/api', employeeModule);
 
 
 app.use((err, req, res, next) => {
