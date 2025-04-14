@@ -105,8 +105,7 @@ const PincodeDataTable = () => {
               <CTableHeaderCell>Delivery Type</CTableHeaderCell>
               <CTableHeaderCell>District</CTableHeaderCell>
               <CTableHeaderCell>State Name</CTableHeaderCell>
-              <CTableHeaderCell>Latitude</CTableHeaderCell>
-              <CTableHeaderCell>Longitude</CTableHeaderCell>
+              <CTableHeaderCell>Type</CTableHeaderCell>
             </CTableRow>
           </CTableHead>
           <CTableBody>
@@ -119,8 +118,7 @@ const PincodeDataTable = () => {
                 <CTableDataCell>{item.delivery}</CTableDataCell>
                 <CTableDataCell>{item.district}</CTableDataCell>
                 <CTableDataCell>{item.statename}</CTableDataCell>
-                <CTableDataCell>{item.latitude}</CTableDataCell>
-                <CTableDataCell>{item.longitude}</CTableDataCell>
+                <CTableDataCell>{item.type}</CTableDataCell>
               </CTableRow>
             ))}
           </CTableBody>
